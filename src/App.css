@@ -1,0 +1,64 @@
+*{
+    background-color: black;
+    padding: 5px;
+}
+
+@font-face {
+    font-family: 'Orbitron';
+    font-weight: 400;
+    src: url('./assets/fonts/Orbitron-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Orbitronm';
+    font-weight: 500;
+    src: url('./assets/fonts/Orbitron-Medium.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Orbitronsb';
+    font-weight: 600;
+    src: url('./assets/fonts/Orbitron-SemiBold.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Orbitronb';
+    font-weight: 700;
+    src: url('./assets/fonts/Orbitron-Bold.ttf') format('truetype');
+  }
+  
+  /* Customize the scrollbar width */
+::-webkit-scrollbar {
+  width: 6px;  
+  height: 5px;
+}
+
+/* Customize the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #333333;  
+}
+
+/* Customize the scrollbar thumb (draggable part) */
+::-webkit-scrollbar-thumb {
+  background-color: #ffcc00a1;  
+
+  border-radius: 10px;      
+}
+
+/* Add hover effect for scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;  
+}
+
+/* loading Comp animation */
+@keyframes pulse {
+  0%,100%{
+    opacity: 1;
+  }
+  50%{
+    opacity: .5;
+  }
+  30%{
+    
+  }
+}
