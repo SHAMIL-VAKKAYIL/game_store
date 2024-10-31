@@ -6,7 +6,16 @@ import { FaStar } from "react-icons/fa";
 import LoadingComp from "./LoadingComp";
 import { Link } from "react-router-dom";
 
-function GamecardComp() {
+
+
+
+
+interface Isearch {
+    searchItem: string
+}
+
+
+function GamecardComp({ searchItem }: Isearch) {
     const dispatch = useDispatch<AppDispatch>()
     const [loading, setloading] = useState(true)
     const games = useSelector((state: RootState) => state.games.game)
@@ -20,8 +29,6 @@ function GamecardComp() {
         }
         loaded()
     }, [dispatch])
-    console.log(games);
-
 
     interface Igames {
         id: number;
@@ -32,30 +39,15 @@ function GamecardComp() {
         rating?: number
 
     }
-    const Trendinggames = games.slice(0, 10)
-    const populargames = games.slice(10, 20)
 
-    const trendgameList = Trendinggames?.map((item: Igames) => {
-        return (
-            <Link to={`Details/${item.name}`}>
-                <div key={item.id} className=" ">
-                    <div className="gap-5 w-60">
-                        <img src={item.background_image} alt="" className="w-64 h-72 object-cover hover:scale-110 transition-all" />
-                        <div className="">
-                            <h3 className="text-white font-med">{item.name.split('').slice(0, 20).join('')}</h3>
-                            <div className="flex  justify-end ">
-                                <div className="bg-secondry items-center flex rounded-md">
-                                    <p className="text-white font-normal bg-secondry text-sm">{item.rating}</p>
-                                    <FaStar color="#FF5722" size={22} className="bg-secondry" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Link>
-        )
+
+    const filterdGameList = games.filter((game: Igames) => {
+        return game.name.toLowerCase().includes(searchItem.toLowerCase())
+
     })
-    const populargameList = populargames?.map((item: Igames) => {
+
+
+    const gameList = filterdGameList?.map((item: Igames) => {
         return (
             <div key={item.id} className=" ">
                 <div className="gap-5 w-60">
@@ -71,20 +63,28 @@ function GamecardComp() {
                     </div>
                 </div>
             </div>
+
         )
     })
+
     return (
         <>
-            {loading ? <LoadingComp /> : <div>
-                <h3 className="flex font-bld text-2xl text-btn ">Trendings</h3>
-                <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
-                    {trendgameList}
+            {loading ? (
+                <LoadingComp />
+            ) : (
+                <div>
+                    {gameList.length > 0 ? (
+                        <div>
+                            <h3 className="flex font-bold text-2xl text-btn font-bld">Games</h3>
+                            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
+                                {gameList}
+                            </div>
+                        </div>
+                    ) : (
+                        <p className="text-white flex font-bold text-2xl  font-bld">No games found for "<p className="flex font-bold text-2xl text-btn font-bld">{searchItem}</p>"</p>
+                    )}
                 </div>
-                <h3 className="flex font-bld text-2xl text-btn ">Popluar</h3>
-                <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
-                    {populargameList}
-                </div>
-            </div>}
+            )}
         </>
     )
 }
