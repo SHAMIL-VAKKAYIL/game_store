@@ -5,6 +5,8 @@ import { fetchGames } from "../store/slices/gameSlice"
 import { FaStar } from "react-icons/fa";
 import LoadingComp from "./LoadingComp";
 import { Link } from "react-router-dom";
+import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
 
 
 
@@ -16,9 +18,14 @@ interface Isearch {
 
 
 function GamecardComp({ searchItem }: Isearch) {
+
     const dispatch = useDispatch<AppDispatch>()
+
     const [loading, setloading] = useState(true)
-    const games = useSelector((state: RootState) => state.games.game)
+    const [whislist, setWhislist] = useState<boolean>(true)
+
+    const games = useSelector((state: RootState) =>
+        state.games.game)
 
 
     useEffect(() => {
@@ -29,6 +36,10 @@ function GamecardComp({ searchItem }: Isearch) {
         }
         loaded()
     }, [dispatch])
+
+    const addToWhislist = () => {
+       setWhislist(!whislist)
+    }
 
     interface Igames {
         id: number;
@@ -50,8 +61,13 @@ function GamecardComp({ searchItem }: Isearch) {
     const gameList = filterdGameList?.map((item: Igames) => {
         return (
             <div key={item.id} className=" ">
-                <div className="gap-5 w-60">
-                    <img src={item.background_image} alt="" className="w-64 h-72 object-cover hover:scale-110 transition-all" />
+                <div className="gap-5 w-60  ">
+                    <div className="relative overflow-hidden group ">
+                        <img src={item.background_image} alt="" className="w-64 h-72 object-cover rounded-lg" />
+                        <div className=" w-10 h-10  flex items-center justify-center rounded-full bg-white absolute right-4 top-4 shadow-md -translate-y-20  group-hover:translate-y-0  transition-transform duration-300 overflow-hidden " onClick={() => addToWhislist(item.id)}>
+                             {whislist?<FaRegHeart className=" bg-transparent ml-[.5px] " size={36} /> : <FaHeart className={` bg-transparent transition-transform duration-300 ml-[.5px] ${whislist ? 'translate-y-8' : 'translate-y-0'} `} size={36} color="#FF5722" />}
+                        </div>
+                    </div>
                     <div className="">
                         <h3 className="text-white font-med">{item.name.split('').slice(0, 20).join('')}</h3>
                         <div className="flex  justify-end ">
@@ -61,6 +77,8 @@ function GamecardComp({ searchItem }: Isearch) {
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
