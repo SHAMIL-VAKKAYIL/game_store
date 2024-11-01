@@ -3,6 +3,7 @@ import whislist from "../assets/icon/wishlist.png"
 import GenreComp from "../components/GenreComp"
 import GamecardComp from "../components/GamecardComp"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 function Home() {
 
 
@@ -25,7 +26,9 @@ function Home() {
                     <Searchbar onSearch={handelSearch} />
                 </div>
                 <div>
+                    <Link to='/whishlist'>
                     <img src={whislist} alt="wishList" className="w-10" />
+                    </Link>
                 </div>
             </div>
             {/* hero section */}

@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 // Define the interface for the game data
@@ -28,7 +28,31 @@ const initialState:GameState={
 const wishlistSlice = createSlice({
     name: 'whislist',
     initialState,
-        reducers:{},
+        reducers:{
+            addToWhislist(state,action){
+                const newItem = action.payload
+                console.log(action);
+                console.log(newItem);
+                
+                const ExistingItem=state.game.find(game=>game.id == newItem.id)
+
+                if(!ExistingItem){
+                    state.game.push({
+                        ...newItem
+                    })
+                }
+            },
+            removeFromWhislist(state,action){
+                const item=action.payload
+                const ExistingItem=state.game.find(game=>game.id == item.id)
+
+                if(ExistingItem){
+                    state.game=state.game.filter(game=>game.id !== item.id)
+                }
+            }
+        },
         
 })
+
+export const {addToWhislist,removeFromWhislist}=wishlistSlice.actions
 export default wishlistSlice.reducer
