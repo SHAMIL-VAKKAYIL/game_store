@@ -29,8 +29,8 @@ function GenreComp() {
 
   const genreItem = Genre?.map((item: Igenre) => {
     return (
-      <Link to={`/genre/${item.name}`}>
-        <div key={item.id} className="flex-col flex md:w-44  md:h-72 justify-center items-center overflow-hidden">
+      <Link key={item.id} to={`/genre/${item.name}`}>
+        <div  className="flex-col flex md:w-44  md:h-72 justify-center items-center overflow-hidden">
           <img src={item.image_background} alt="" className=" w-full h-full rounded-lg  object-cover hover:scale-90 transition-all" />
           <h1 className="text-white   transition-all duration-300 w-full rounded-md font-med cursor-pointer">{item.name}</h1>
         </div>
@@ -43,7 +43,7 @@ function GenreComp() {
       {loading ? '' :
         <div className="">
           <h3 className="font-bld text-btn md:text-2xl text-lg">Serch by category</h3>
-          <div className=" gap-3 w-full grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-center mt-3">
+          <div className=" gap-3 w-full grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-center mt-3">
             {genreItem}
             <Link to={`/genre/all`}>
               <div className="flex-col flex md:w-44 md:h-72 justify-center items-center overflow-hidden">

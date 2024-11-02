@@ -12,15 +12,15 @@ function Home() {
     const handelSearch = (term: string) => {
         setsearchTerm(term)
     }
-    console.log(searchTerm);
 
     return (
 
         <div className=" overflow-hidden">
             {/* navbar */}
             <div className="flex justify-between items-center ">
-                <div className="w-[45%] md:w-full ">
-                    <h3 className="font-bld text-btn text-lg md:text-2xl flex w-full">G-store</h3>
+                <div className=" flex justify-center">
+                    <h3 className="font-bld text-btn text-lg md:text-2xl flex w-full">G-</h3>
+                    <h3 className="font-bld text-btn text-lg md:text-2xl flex w-full">store</h3>
                 </div>
                 <div className="md:w-[65%]">
                     <Searchbar onSearch={handelSearch} />

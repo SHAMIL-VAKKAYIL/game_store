@@ -18,7 +18,7 @@ export function CreateLoadingComp() {
 function LoadingComp() {
     return (
         <>
-        <div className="grid lg:grid-cols-5 md:grid-cols-3">
+        <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3">
             <CreateLoadingComp />
             <CreateLoadingComp />
             <CreateLoadingComp />

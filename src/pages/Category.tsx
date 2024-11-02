@@ -26,7 +26,6 @@ function Category() {
         }
     }, [dispatch, name])
 
-    console.log(Genre);
 
 
     interface IgenreGame {
@@ -70,7 +69,7 @@ function Category() {
 
         // all category
 
-        if(name=='all'){
+        if (name == 'all') {
             return (
                 <div key={item.id} className="w-[100%] ">
                     <div>
@@ -95,9 +94,9 @@ function Category() {
 
     return (
         <div className="">
-            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 ">
+            {loading ? '' : <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 ">
                 {Games}
-            </div>
+            </div>}
         </div>
     )
 }

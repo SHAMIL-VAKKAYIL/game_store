@@ -20,7 +20,7 @@ function Searchbar({onSearch}:Isearch) {
 
     return (
         <div>
-            <form action="" onSubmit={handleSubmit} className="">
+            <form action="" onSubmit={handleSubmit} className="flex justify-center">
                 <div className="bg-secondry p-2 md:p-3 w-[80%] md:w-full flex justify-between md:rounded-full rounded-md items-center">
                     <input
                         className="w-full bg-transparent outline-none text-white font-normal h-full text-xs ms:text-base "

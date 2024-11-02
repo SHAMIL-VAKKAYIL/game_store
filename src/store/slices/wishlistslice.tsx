@@ -14,9 +14,8 @@ interface GameState {
     game: Game[];
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null;
-
-
 }
+
 // declare initail state
 const initialState:GameState={
     game:[],
@@ -24,18 +23,13 @@ const initialState:GameState={
     error:null
 }
 
-
 const wishlistSlice = createSlice({
     name: 'whislist',
     initialState,
         reducers:{
             addToWhislist(state,action){
                 const newItem = action.payload
-                console.log(action);
-                console.log(newItem);
-                
                 const ExistingItem=state.game.find(game=>game.id == newItem.id)
-
                 if(!ExistingItem){
                     state.game.push({
                         ...newItem
@@ -45,13 +39,11 @@ const wishlistSlice = createSlice({
             removeFromWhislist(state,action){
                 const item=action.payload
                 const ExistingItem=state.game.find(game=>game.id == item.id)
-
                 if(ExistingItem){
                     state.game=state.game.filter(game=>game.id !== item.id)
                 }
             }
         },
-        
 })
 
 export const {addToWhislist,removeFromWhislist}=wishlistSlice.actions
