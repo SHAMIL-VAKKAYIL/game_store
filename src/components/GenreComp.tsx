@@ -30,7 +30,7 @@ function GenreComp() {
   const genreItem = Genre?.map((item: Igenre) => {
     return (
       <Link to={`/genre/${item.name}`}>
-        <div key={item.id} className="flex-col flex w-44  h-72 justify-center items-center overflow-hidden">
+        <div key={item.id} className="flex-col flex md:w-44  md:h-72 justify-center items-center overflow-hidden">
           <img src={item.image_background} alt="" className=" w-full h-full rounded-lg  object-cover hover:scale-90 transition-all" />
           <h1 className="text-white   transition-all duration-300 w-full rounded-md font-med cursor-pointer">{item.name}</h1>
         </div>
@@ -42,11 +42,11 @@ function GenreComp() {
     <div className="flex flex-col items-center justify-center"> 
       {loading ? '' :
         <div className="">
-          <h3 className="font-bld text-btn text-2xl">Serch by category</h3>
-          <div className=" gap-3 w-full grid lg:grid-cols-6 md:grid-cols-4 grid-cols-3 items-center justify-center">
+          <h3 className="font-bld text-btn md:text-2xl text-lg">Serch by category</h3>
+          <div className=" gap-3 w-full grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-center mt-3">
             {genreItem}
             <Link to={`/genre/all`}>
-              <div className="flex-col flex w-44 h-72 justify-center items-center overflow-hidden">
+              <div className="flex-col flex md:w-44 md:h-72 justify-center items-center overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1640301133815-4bec64fca33f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className=" w-full h-full rounded-lg  object-cover hover:scale-90 transition-all" />
                 <h1 className="text-white   transition-all duration-300 w-full font-med cursor-pointer">All Category</h1>
               </div>

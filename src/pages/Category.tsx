@@ -50,14 +50,14 @@ function Category() {
             return (
                 <div key={item.id} className=" w-[100%] ">
                     <div>
-                        <h1 className="font-bld text-btn text-2xl ">{item.name}</h1>
+                        <h1 className="font-bld text-btn md:text-2xl text-lg ">{item.name}</h1>
                     </div>
                     <div>
                         {item.games.map((gameItems) => (
                             <div key={gameItems.id}>
                                 <div>
                                     <div className="w-[100%]">
-                                        <h3 className="text-white font-med hover:tracking-widest hover:text-btn transition-all ">{gameItems.name}</h3>
+                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all ">{gameItems.name}</h3>
 
                                     </div>
                                 </div>
@@ -67,18 +67,21 @@ function Category() {
                 </div>
             )
         }
+
+        // all category
+
         if(name=='all'){
             return (
                 <div key={item.id} className="w-[100%] ">
                     <div>
-                        <h1 className="font-bld text-btn text-2xl">{item.name}</h1>
+                        <h1 className="font-bld text-btn md:text-2xl text-lg">{item.name}</h1>
                     </div>
                     <div>
                         {item.games.map((gameItems) => (
                             <div key={gameItems.id}>
                                 <div>
                                     <div className="w-[100%]">
-                                        <h3 className="text-white font-med hover:tracking-widest hover:text-btn transition-all">{gameItems.name}</h3>
+                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all">{gameItems.name}</h3>
 
                                     </div>
                                 </div>
@@ -92,7 +95,7 @@ function Category() {
 
     return (
         <div className="">
-            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
+            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 ">
                 {Games}
             </div>
         </div>

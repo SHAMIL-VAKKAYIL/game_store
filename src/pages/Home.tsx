@@ -13,23 +13,24 @@ function Home() {
         setsearchTerm(term)
     }
     console.log(searchTerm);
-    
+
     return (
 
-        <div>
+        <div className=" overflow-hidden">
             {/* navbar */}
             <div className="flex justify-between items-center ">
-                <div>
-                    <h3 className="font-bld text-btn text-2xl">G-store</h3>
+                <div className="w-[45%] md:w-full ">
+                    <h3 className="font-bld text-btn text-lg md:text-2xl flex w-full">G-store</h3>
                 </div>
-                <div className="w-[65%]">
+                <div className="md:w-[65%]">
                     <Searchbar onSearch={handelSearch} />
                 </div>
                 <div>
                     <Link to='/whishlist'>
-                    <img src={whislist} alt="wishList" className="w-10" />
+                        <img src={whislist} alt="wishList" className="md:w-10 w-8 " />
                     </Link>
                 </div>
+
             </div>
             {/* hero section */}
 

@@ -20,17 +20,19 @@ function Searchbar({onSearch}:Isearch) {
 
     return (
         <div>
-            <form action="" onSubmit={handleSubmit}>
-                <div className="bg-secondry p-3 flex justify-between rounded-full items-center">
+            <form action="" onSubmit={handleSubmit} className="">
+                <div className="bg-secondry p-2 md:p-3 w-[80%] md:w-full flex justify-between md:rounded-full rounded-md items-center">
                     <input
-                        className="w-full bg-transparent outline-none text-white font-normal h-full "
+                        className="w-full bg-transparent outline-none text-white font-normal h-full text-xs ms:text-base "
                         type="text"
                         name=""
                         value={searhTerm}
                         onChange={(e) => { setsearhTerm(e.target.value) }}
                         id=""
                         placeholder="Search Games" />
-                    <button type="submit" className="bg-secondry"><FiSearch color="#FFCC00" className="bg-transparent hover:scale-105 transition-all duration-150" size={32} /></button>
+                    <button type="submit" className="bg-secondry hidden md:flex"><FiSearch color="#FFCC00" className="bg-transparent hover:scale-105 transition-all duration-150" size={32} /></button>
+                    <button type="submit" className="bg-secondry md:hidden"><FiSearch color="#FFCC00" className="bg-transparent hover:scale-105 transition-all duration-150" size={18} /></button>
+
                 </div>
             </form>
         </div>

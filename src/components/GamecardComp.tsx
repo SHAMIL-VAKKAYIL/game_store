@@ -67,22 +67,25 @@ function GamecardComp({ searchItem }: Isearch) {
 
         return (
             <div key={item.id} className=" ">
-                <div className="gap-5 w-60  ">
+                <div className=" flex flex-col gap-5 md:w-60 w-32 mt-3">
                     <div className="relative overflow-hidden group ">
-                        <img src={item.background_image} alt="" className="w-64 h-72 object-cover rounded-lg" />
-                        <div className=" w-10 h-10  flex items-center justify-center rounded-full bg-white absolute right-4 top-4 shadow-md -translate-y-20  group-hover:translate-y-0  transition-transform duration-300 overflow-hidden " onClick={() => toogleWhislist(item)}>
+                        <img src={item.background_image} alt="" className="md:w-64 md:h-72 w-32 h-40 object-cover rounded-lg" />
+                        <div className=" md:w-10 md:h-10 w-6 h-6  flex items-center justify-center rounded-full bg-white absolute md:right-4 md:top-4 top-2 right-2 shadow-md -translate-y-20  group-hover:translate-y-0  transition-transform duration-300 overflow-hidden " onClick={() => toogleWhislist(item)}>
                             {isInWhislist ? <FaHeart className="bg-transparent ml-[.5px] transition-transform duration-300 translate-y-0" size={36} color="#FF5722" onClick={() => dispatch(removeFromWhislist(item))} /> :
                                 <FaRegHeart className="bg-transparent ml-[.5px] transition-transform duration-300" size={36} onClick={() => dispatch(addToWhislist(item))} />}
-
-
                         </div>
                     </div>
                     <div className="">
-                        <h3 className="text-white font-med">{item.name.split('').slice(0, 20).join('')}</h3>
+                        <h3 className="text-white font-med text-xs sm:text-sm md:text-base">{item.name.split('').slice(0, 20).join('')}</h3>
                         <div className="flex  justify-end ">
-                            <div className="bg-secondry items-center flex rounded-md">
-                                <p className="text-white font-normal bg-secondry text-sm">{item.rating}</p>
-                                <FaStar color="#FF5722" size={22} className="bg-secondry" />
+                            <div className="bg-secondry items-center flex rounded-md justify-center">
+                                <p className="text-white font-normal bg-secondry md:text-sm text-xs">{item.rating}</p>
+                                <div className="bg-transparent hidden md:flex items-center">
+                                    <FaStar color="#FF5722" size={22} className="bg-secondry" />
+                                </div>
+                                <div className="bg-transparent  md:hidden items-center flex">
+                                    <FaStar color="#FF5722" size={18} className="bg-secondry" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -103,7 +106,7 @@ function GamecardComp({ searchItem }: Isearch) {
                     {gameList.length > 0 ? (
                         <div>
                             <h3 className="flex font-bold text-2xl text-btn font-bld">Games</h3>
-                            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
+                            <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 mt-3">
                                 {gameList}
                             </div>
                         </div>
