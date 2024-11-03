@@ -77,7 +77,6 @@ function GamecardComp({ searchItem }: Isearch) {
             </div>   
         )
     })
-
     return (
         <>
             {loading ? (

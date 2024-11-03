@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react"
-import { FaStar } from "react-icons/fa"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../store/store"
 import { fetchGenres } from "../store/slices/genreSlice"
-import { div } from "framer-motion/client"
 
 function Category() {
 
