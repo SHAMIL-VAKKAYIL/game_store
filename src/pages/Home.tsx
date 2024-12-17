@@ -9,6 +9,7 @@ function Home() {
 
 
     const [searchTerm, setsearchTerm] = useState<string>('')
+    const [pagination, setPagination] = useState<number>()
 
     const handelSearch = (term: string) => {
         setsearchTerm(term)
@@ -38,9 +39,13 @@ function Home() {
             <div>
 
             </div>
-            <div className="flex flex-col justify-center items-center gap-y-16">
+            <div className="flex flex-col justify-center items-center gap-y-16 text-white">
 
-                <GamecardComp searchItem={searchTerm} />
+                <GamecardComp searchItem={searchTerm} page={pagination} />
+                <p onClick={()=>setPagination(1)}>1</p>
+                <p onClick={()=>setPagination(2)}>2</p>
+                <p onClick={()=>setPagination(3)}>3</p>
+                <p onClick={()=>setPagination(4)}>4</p>
                 <GenreComp />
             </div>
             <div>

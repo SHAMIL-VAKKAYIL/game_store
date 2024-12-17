@@ -13,10 +13,11 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 interface Isearch {
     searchItem: string
+    page:number
 }
 
 
-function GamecardComp({ searchItem }: Isearch) {
+function GamecardComp({ searchItem, page }: Isearch) {
 
     const dispatch = useDispatch<AppDispatch>()
 
@@ -29,11 +30,11 @@ function GamecardComp({ searchItem }: Isearch) {
     useEffect(() => {
         const loaded = async () => {
             setloading(true)
-            await dispatch(fetchGames())
+            await dispatch(fetchGames({page:page,pageSize:20}))
             setloading(false)
         }
         loaded()
-    }, [dispatch])
+    }, [dispatch,page])
 
 
 
@@ -74,7 +75,8 @@ function GamecardComp({ searchItem }: Isearch) {
                             <FaRegHeart className="bg-transparent ml-[.5px] transition-transform duration-300" size={36} onClick={() => dispatch(addToWhislist(item))} />}
                     </div>}
                 />
-            </div>   
+
+            </div>
         )
     })
     return (

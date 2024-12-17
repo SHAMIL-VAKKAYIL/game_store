@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { axiosCreate } from "../../service/api";
 
-const API_KEY=import.meta.env.VITE_API_KEY
+const API_KEY = import.meta.env.VITE_API_KEY
 
 
 
-export const fetchGames=createAsyncThunk('games/fetchGames',async()=>{
-    const response=await axiosCreate.get(`games?key=${API_KEY}`)
+export const fetchGames = createAsyncThunk('games/fetchGames', async ({ page = 1, pageSize = 20 }: { page?: number, pageSize?: number }) => {
+    const response = await axiosCreate.get(`games?key=${API_KEY}&page_size=${pageSize}&page=${page}`)
     return response.data.results
 })
 
@@ -17,8 +17,8 @@ interface Game {
     name: string;
     released: string;
     background_image: string;
-    short_screenshots:string[];
-    rating:number
+    short_screenshots: string[];
+    rating: number
 }
 
 // Define the initial state interface
@@ -33,29 +33,29 @@ interface GameState {
 
 // declare initail state
 
-const initialState:GameState={
-    game:[],
-    status :'idle',
-    error:null
+const initialState: GameState = {
+    game: [],
+    status: 'idle',
+    error: null
 }
 
-const gamesSlice=createSlice({
-    name:'games',
+const gamesSlice = createSlice({
+    name: 'games',
     initialState,
-    reducers:{},
-    extraReducers:(builder)=>{
+    reducers: {},
+    extraReducers: (builder) => {
         builder
-        .addCase(fetchGames.pending,(state)=>{
-            state.status="loading"
-        })
-        .addCase(fetchGames.fulfilled,(state,action)=>{
-            state.status="succeeded";
-            state.game=action.payload
-        })
-        .addCase(fetchGames.rejected,(state,action)=>{
-            state.status="failed"
-            state.error=action.error.message || 'Failed to fetch games';
-        })
+            .addCase(fetchGames.pending, (state) => {
+                state.status = "loading"
+            })
+            .addCase(fetchGames.fulfilled, (state, action) => {
+                state.status = "succeeded";
+                state.game = action.payload
+            })
+            .addCase(fetchGames.rejected, (state, action) => {
+                state.status = "failed"
+                state.error = action.error.message || 'Failed to fetch games';
+            })
     }
 
 })
