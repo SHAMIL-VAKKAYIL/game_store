@@ -1,5 +1,6 @@
 import React from "react"
 import { FaStar } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 
 
@@ -14,6 +15,7 @@ interface Igame {
 function Gamecard({ gameId, gameImage, gameName, gameRating, compo }: Igame) {
     return (
         <div key={gameId} className=" ">
+            <Link to={`Details/${gameId}`}>
             <div className=" flex flex-col gap-5 md:w-60 w-36 mt-3">
                 <div className="relative overflow-hidden group ">
                     <img src={gameImage} alt="" className="md:w-64 md:h-72 w-36 h-40 object-cover rounded-lg" />
@@ -34,6 +36,8 @@ function Gamecard({ gameId, gameImage, gameName, gameRating, compo }: Igame) {
                     </div>
                 </div>
             </div>
+            </Link>
+
         </div>
     )
 }

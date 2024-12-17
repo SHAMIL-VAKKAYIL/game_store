@@ -4,6 +4,7 @@ import './App.css'
 import Home from './pages/Home'
 import Category from './pages/Category'
 import Whislist from './pages/Whislist'
+import GameDetails from './pages/GameDetails'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='genre/:name' element={<Category/>} />
           <Route path='/whishlist' element={<Whislist/>} />
+          <Route path='/Details/:id' element={<GameDetails/>} />
         </Routes>
       </Router>
     </div>
