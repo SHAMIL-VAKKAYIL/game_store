@@ -9,7 +9,7 @@ function Home() {
 
 
     const [searchTerm, setsearchTerm] = useState<string>('')
-    const [pagination, setPagination] = useState<number>()
+    const [pagination, setPagination] = useState<number>(1)
 
     const handelSearch = (term: string) => {
         setsearchTerm(term)
@@ -42,10 +42,17 @@ function Home() {
             <div className="flex flex-col justify-center items-center gap-y-16 text-white">
 
                 <GamecardComp searchItem={searchTerm} page={pagination} />
-                <p onClick={()=>setPagination(1)}>1</p>
-                <p onClick={()=>setPagination(2)}>2</p>
-                <p onClick={()=>setPagination(3)}>3</p>
-                <p onClick={()=>setPagination(4)}>4</p>
+                <div className="flex gap-3 ">
+                    {[1, 2, 3, 4, 5].map((paginationNum) => (
+                        <p
+                            className={`bg-secondry py-2 px-3 rounded-md hover:cursor-pointer ${pagination===paginationNum?'border-2 border-btn ':''}`}
+                            onClick={() => setPagination(paginationNum)}
+                        >
+                            {paginationNum}
+                        </p>
+                    ))}
+                   
+                </div>
                 <GenreComp />
             </div>
             <div>

@@ -13,11 +13,19 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 interface Isearch {
     searchItem: string
-    page:number
+    page: number
 }
 
 
 function GamecardComp({ searchItem, page }: Isearch) {
+
+    interface Igames {
+        id: number;
+        name: string;
+        background_image?: string;
+        rating?: number
+
+    }
 
     const dispatch = useDispatch<AppDispatch>()
 
@@ -30,21 +38,14 @@ function GamecardComp({ searchItem, page }: Isearch) {
     useEffect(() => {
         const loaded = async () => {
             setloading(true)
-            await dispatch(fetchGames({page:page,pageSize:20}))
+            await dispatch(fetchGames({ page: page, pageSize: 20 }))
             setloading(false)
         }
         loaded()
-    }, [dispatch,page])
+    }, [page])
 
 
 
-    interface Igames {
-        id: number;
-        name: string;
-        background_image?: string;
-        rating?: number
-
-    }
 
 
     const filterdGameList = games.filter((game: Igames) => {
@@ -70,9 +71,9 @@ function GamecardComp({ searchItem, page }: Isearch) {
                     gameImage={item.background_image}
                     gameName={item.name}
                     gameRating={item.rating}
-                    compo={<div className=" md:w-10 md:h-10 w-6 h-6  flex items-center justify-center rounded-full bg-white absolute md:right-4 md:top-4 top-2 right-2 shadow-md -translate-y-20  group-hover:translate-y-0  transition-transform duration-300 overflow-hidden " onClick={() => toogleWhislist(item)}>
-                        {isInWhislist ? <FaHeart className="bg-transparent ml-[.5px] transition-transform duration-300 translate-y-0" size={36} color="#FF5722" onClick={() => dispatch(removeFromWhislist(item))} /> :
-                            <FaRegHeart className="bg-transparent ml-[.5px] transition-transform duration-300" size={36} onClick={() => dispatch(addToWhislist(item))} />}
+                    compo={<div className=" md:w-10 md:h-10 w-8 h-8  flex items-center justify-center rounded-full bg-white absolute md:right md:top-4 top-2 right-2.5 shadow-md -translate-y-20 group-hover:translate-y-2   transition-transform duration-300 overflow-hidden " onClick={() => toogleWhislist(item)}>
+                        {isInWhislist ? <FaHeart className="bg-transparent z-10 ml-[.5px] w-5 sm:w-auto transition-transform duration-300 translate-y-0" size={36} color="#FF5722" /> :
+                            <FaRegHeart className="bg-transparent z-10 w-5 ml-[.5px] sm:w-auto transition-transform duration-300" size={36} color="#000"  />}
                     </div>}
                 />
 
@@ -88,7 +89,7 @@ function GamecardComp({ searchItem, page }: Isearch) {
                     {gameList.length > 0 ? (
                         <div>
                             <h3 className="flex font-bold text-2xl text-btn font-bld">Games</h3>
-                            <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 mt-3">
+                            <div className="grid xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 mt-3">
                                 {gameList}
                             </div>
                         </div>

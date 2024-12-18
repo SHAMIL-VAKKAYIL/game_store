@@ -17,29 +17,41 @@ function GenreComp() {
       setloading(false)
     }
     loaded()
-  }, [dispatch])
+  }, [])
 
   type Igenre = {
     id: number;
     name: string;
     image_background: string
   }
+  console.log(Genre);
 
 
 
   const genreItem = Genre?.map((item: Igenre) => {
+    
     return (
       <Link key={item.id} to={`/genre/${item.name}`}>
-        <div  className="flex-col flex md:w-44  md:h-72 justify-center items-center overflow-hidden">
-          <img src={item.image_background} alt="" className=" w-full h-full rounded-lg  object-cover hover:scale-90 transition-all" />
-          <h1 className="text-white   transition-all duration-300 w-full rounded-md font-med cursor-pointer">{item.name}</h1>
+        <div className="flex flex-col md:w-44 md:h-72 justify-center items-center">
+          <div className="relative w-full h-full  overflow-hidden rounded-lg">
+            <img
+              src={item.image_background}
+              alt=""
+              className="w-full h-full object-cover rounded-md transform scale-100 hover:scale-125 transition-transform duration-500 ease-in-out"
+            />
+          </div>
+          <h1 className="text-white text-center mt-2 transition-all duration-300 w-full font-medium cursor-pointer">
+            {item.name}
+          </h1>
         </div>
+
+
       </Link>
 
     )
   })
   return (
-    <div className="flex flex-col items-center justify-center"> 
+    <div className="flex flex-col items-center justify-center">
       {loading ? '' :
         <div className="">
           <h3 className="font-bld text-btn md:text-2xl text-lg">Serch by category</h3>

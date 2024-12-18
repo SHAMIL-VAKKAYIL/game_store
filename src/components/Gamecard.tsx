@@ -9,17 +9,18 @@ interface Igame {
     gameImage?: string
     gameName: string
     gameRating?: number
-    compo: React.ReactNode 
+    compo: React.ReactNode
 }
 
 function Gamecard({ gameId, gameImage, gameName, gameRating, compo }: Igame) {
     return (
         <div key={gameId} className=" ">
-            <Link to={`Details/${gameId}`}>
             <div className=" flex flex-col gap-5 md:w-60 w-36 mt-3">
                 <div className="relative overflow-hidden group ">
-                    <img src={gameImage} alt="" className="md:w-64 md:h-72 w-36 h-40 object-cover rounded-lg" />
-                    {compo}
+                    <Link to={`Details/${gameId}`}>
+                        <img src={gameImage} alt="" className="md:w-64 md:h-72 w-36 h-40 object-cover rounded-lg" />
+                    </Link>
+                        {compo}
                 </div>
                 <div className="">
                     <h3 className="text-white font-med text-xs sm:text-sm md:text-base">{gameName.split('').slice(0, 20).join('')}</h3>
@@ -36,7 +37,6 @@ function Gamecard({ gameId, gameImage, gameName, gameRating, compo }: Igame) {
                     </div>
                 </div>
             </div>
-            </Link>
 
         </div>
     )

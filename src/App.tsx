@@ -16,6 +16,7 @@ function App() {
           <Route path='genre/:name' element={<Category/>} />
           <Route path='/whishlist' element={<Whislist/>} />
           <Route path='/Details/:id' element={<GameDetails/>} />
+          <Route path='/whishlist/Details/:id' element={<GameDetails/>} />
         </Routes>
       </Router>
     </div>
