@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../store/store'
 import { HiOutlineXMark } from 'react-icons/hi2';
 import { removeFromWhislist } from '../store/slices/wishlistslice';
-import Gamecard from '../components/Gamecard';
+import Gamecard from '../components/reusable/Gamecard';
 
 function Whislist() {
 

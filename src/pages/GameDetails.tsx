@@ -148,7 +148,7 @@ function GameDetails() {
                         <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-5">
                             <div className="p-4 rounded-lg shadow-md">
                                 <h3 className="text-xl sm:text-2xl  text-btn font-med tracking-wider ">Playtime</h3>
-                                <p className="text-white text-sm sm:text-base font-normal tracking-wide">{detail.playtime} hours</p>
+                                <p className="text-white text-sm sm:text-base font-normal tracking-wide">{detail.playtime} Hours</p>
                             </div>
                             <div className="p-4 rounded-lg shadow-md">
                                 <h3 className="text-xl sm:text-2xl  text-btn font-med tracking-wider ">Release Date</h3>

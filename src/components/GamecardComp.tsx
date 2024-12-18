@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../store/store"
 import { useEffect, useState } from "react"
 import { fetchGames } from "../store/slices/gameSlice"
-import LoadingComp from "./LoadingComp";
+import LoadingComp from "./reusable/LoadingComp";
 import { addToWhislist, removeFromWhislist } from "../store/slices/wishlistslice";
-import Gamecard from "./Gamecard";
+import Gamecard from "./reusable/Gamecard";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 
@@ -71,7 +71,7 @@ function GamecardComp({ searchItem, page }: Isearch) {
                     gameImage={item.background_image}
                     gameName={item.name}
                     gameRating={item.rating}
-                    compo={<div className=" md:w-10 md:h-10 w-8 h-8  flex items-center justify-center rounded-full bg-white absolute md:right md:top-4 top-2 right-2.5 shadow-md -translate-y-20 group-hover:translate-y-2   transition-transform duration-300 overflow-hidden " onClick={() => toogleWhislist(item)}>
+                    compo={<div className=" md:w-10 md:h-10 w-8 h-8  flex items-center justify-center rounded-full bg-white absolute md:right md:top-4 top-2 right-1 shadow-md -translate-y-20 group-hover:translate-y-2   transition-transform duration-300 overflow-hidden " onClick={() => toogleWhislist(item)}>
                         {isInWhislist ? <FaHeart className="bg-transparent z-10 ml-[.5px] w-5 sm:w-auto transition-transform duration-300 translate-y-0" size={36} color="#FF5722" /> :
                             <FaRegHeart className="bg-transparent z-10 w-5 ml-[.5px] sm:w-auto transition-transform duration-300" size={36} color="#000"  />}
                     </div>}
@@ -89,7 +89,7 @@ function GamecardComp({ searchItem, page }: Isearch) {
                     {gameList.length > 0 ? (
                         <div>
                             <h3 className="flex font-bold text-2xl text-btn font-bld">Games</h3>
-                            <div className="grid xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 mt-3">
+                            <div className="flex flex-wrap justify-center mt-3">
                                 {gameList}
                             </div>
                         </div>

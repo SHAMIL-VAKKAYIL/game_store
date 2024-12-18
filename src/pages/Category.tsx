@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../store/store"
 import { fetchGenres } from "../store/slices/genreSlice"
@@ -29,17 +29,20 @@ function Category() {
     interface IgenreGame {
         id: number;
         name: string;
-        released: string;
-        background_image: string;
-        short_screenshots: string[];
-        rating: number
     }
     interface Igenre {
         id: number;
         name: string;
-        image_background: string
         games: IgenreGame[]
     }
+
+    console.log(Genre);
+
+    const navigate = useNavigate()
+    const gameDetails = (id:number) => {
+        navigate(`/Details/${id}`)
+    }
+
 
     const Games = Genre?.map((item: Igenre) => {
         if (name == item.name) {
@@ -54,7 +57,7 @@ function Category() {
                             <div key={gameItems.id}>
                                 <div>
                                     <div className="w-[100%]">
-                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all ">{gameItems.name}</h3>
+                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all " onClick={()=>gameDetails(gameItems.id)}>{gameItems.name}</h3>
 
                                     </div>
                                 </div>
@@ -78,7 +81,7 @@ function Category() {
                             <div key={gameItems.id}>
                                 <div>
                                     <div className="w-[100%]">
-                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all">{gameItems.name}</h3>
+                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all " onClick={()=>gameDetails(gameItems.id)}>{gameItems.name}</h3>
 
                                     </div>
                                 </div>

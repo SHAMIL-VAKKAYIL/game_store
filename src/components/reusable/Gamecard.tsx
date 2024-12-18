@@ -15,10 +15,10 @@ interface Igame {
 function Gamecard({ gameId, gameImage, gameName, gameRating, compo }: Igame) {
     return (
         <div key={gameId} className=" ">
-            <div className=" flex flex-col gap-5 md:w-60 w-36 mt-3">
+            <div className=" flex flex-col gap-5 sm:w-60 w-36 mt-3">
                 <div className="relative overflow-hidden group ">
                     <Link to={`Details/${gameId}`}>
-                        <img src={gameImage} alt="" className="md:w-64 md:h-72 w-36 h-40 object-cover rounded-lg" />
+                        <img src={gameImage} alt="" className="sm:w-64 sm:h-72 w-36 h-40 object-cover rounded-lg" />
                     </Link>
                         {compo}
                 </div>
