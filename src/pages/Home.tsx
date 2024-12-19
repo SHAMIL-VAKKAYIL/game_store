@@ -12,22 +12,19 @@ function Home() {
     const [searchTerm, setsearchTerm] = useState<string>("");
     const [pagination, setPagination] = useState<number>(1);
 
-    // Slideshow state
     const [currentSlide, setCurrentSlide] = useState<number>(0);
     const slides = ['https://drop-assets.ea.com/images/6KK77Eipo5KeXiaZh8SDwo/76c28d2bea477e5de43734956a216fac/palmer.png?im=AspectCrop=(16,9),xPosition=0.5,yPosition=0.5&q=85&w=1280', 'https://www.quanticdream.com/img/uploads/game/page_19/80a6da5f447bae655d36e4f344aac860.jpeg', 'https://gmedia.playstation.com/is/image/SIEPDC/black-myth-wukong-screenshot-01-en-24jan24?$2400px$']; // Array of game image paths
 
-    // Function to handle search
     const handelSearch = (term: string) => {
         setsearchTerm(term);
     };
 
-    // Slideshow effect: Automatically change slides every 3 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % slides.length);
-        }, 3000);
+        }, 3500);
 
-        return () => clearInterval(interval); // Cleanup on unmount
+        return () => clearInterval(interval)
     }, [slides.length]);
 
     return (
@@ -54,7 +51,6 @@ function Home() {
                     <img
                         key={index}
                         src={slide}
-                        alt={`Slide ${index + 1}`}
                         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000  rounded-md ${
                             index === currentSlide ? "opacity-100" : "opacity-0"
                         }`}

@@ -34,7 +34,7 @@ function GameDetails() {
 
     const { id } = useParams<{ id: string }>()
     const [detail, setDetail] = useState<IGameDetails | null>(null)
-    const [fulldesc, setFulldesc] = useState<boolean>(false)
+    const [fulldesc, setFulldesc] = useState<boolean>(true)
 
     useEffect(() => {
         const fetchDetails = async () => {

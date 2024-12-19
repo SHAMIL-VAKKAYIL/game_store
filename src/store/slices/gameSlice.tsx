@@ -5,8 +5,9 @@ const API_KEY = import.meta.env.VITE_API_KEY
 
 
 
-export const fetchGames = createAsyncThunk('games/fetchGames', async ({ page = 1, pageSize = 20 }: { page?: number, pageSize?: number }) => {
-    const response = await axiosCreate.get(`games?key=${API_KEY}&page_size=${pageSize}&page=${page}`)
+export const fetchGames = createAsyncThunk('games/fetchGames', async ({ page = 1, pageSize = 20, searchTerm = '' }: { page?: number, pageSize?: number, searchTerm?: string }) => {
+    const searchParam = searchTerm ? `&search=${encodeURIComponent(searchTerm)}`:'';
+    const response = await axiosCreate.get(`games?key=${API_KEY}&page_size=${pageSize}&page=${page}${searchParam}`)
     return response.data.results
 })
 

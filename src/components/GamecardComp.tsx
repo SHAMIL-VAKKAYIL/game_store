@@ -38,20 +38,12 @@ function GamecardComp({ searchItem, page }: Isearch) {
     useEffect(() => {
         const loaded = async () => {
             setloading(true)
-            await dispatch(fetchGames({ page: page, pageSize: 20 }))
+            await dispatch(fetchGames({ page: page, pageSize: 15, searchTerm: searchItem }))
             setloading(false)
         }
         loaded()
-    }, [page])
+    }, [page,searchItem])
 
-
-
-
-
-    const filterdGameList = games.filter((game: Igames) => {
-        return game.name.toLowerCase().includes(searchItem.toLowerCase())
-
-    })
 
     const toogleWhislist = (game: Igames) => {
         if (whishlist.find((item: Igames) => item.id === game.id)) {
@@ -61,7 +53,7 @@ function GamecardComp({ searchItem, page }: Isearch) {
         }
     }
 
-    const gameList = filterdGameList?.map((item: Igames) => {
+    const gameList = games?.map((item: Igames) => {
         const isInWhislist = whishlist.some((game: Igames) => game.id === item.id)
 
         return (
@@ -73,7 +65,7 @@ function GamecardComp({ searchItem, page }: Isearch) {
                     gameRating={item.rating}
                     compo={<div className=" md:w-10 md:h-10 w-8 h-8  flex items-center justify-center rounded-full bg-white absolute md:right md:top-4 top-2 right-1 shadow-md -translate-y-20 group-hover:translate-y-2   transition-transform duration-300 overflow-hidden " onClick={() => toogleWhislist(item)}>
                         {isInWhislist ? <FaHeart className="bg-transparent z-10 ml-[.5px] w-5 sm:w-auto transition-transform duration-300 translate-y-0" size={36} color="#FF5722" /> :
-                            <FaRegHeart className="bg-transparent z-10 w-5 ml-[.5px] sm:w-auto transition-transform duration-300" size={36} color="#000"  />}
+                            <FaRegHeart className="bg-transparent z-10 w-5 ml-[.5px] sm:w-auto transition-transform duration-300" size={36} color="#000" />}
                     </div>}
                 />
 
@@ -88,8 +80,8 @@ function GamecardComp({ searchItem, page }: Isearch) {
                 <div>
                     {gameList.length > 0 ? (
                         <div>
-                            <h3 className="flex font-bold text-2xl text-btn font-bld">Games</h3>
-                            <div className="flex flex-wrap justify-center mt-3">
+                            <h3 className="flex font-bold text-2xl text-btn font-bld mt-5">Games</h3>
+                            <div className="flex flex-wrap justify-center mt-">
                                 {gameList}
                             </div>
                         </div>
