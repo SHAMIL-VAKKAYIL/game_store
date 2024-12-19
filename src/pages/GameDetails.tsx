@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { gameDetails } from '../store/slices/gameDetails'
 import { FaHeart, FaRegHeart, FaStar } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../store/store'
 import ReactLoading from 'react-loading';
 import { addToWhislist, removeFromWhislist } from '../store/slices/wishlistslice'
+import { MdOutlineKeyboardBackspace } from 'react-icons/md'
 
 function GameDetails() {
     interface IPlatform {
@@ -65,10 +66,11 @@ function GameDetails() {
         }
     }
     const isInWhislist = whishlist.some((game: Igames) => game.id === detail?.id)
-
+    const navigate = useNavigate()
 
     return (
         <div className=" text-white min-h-screen relative">
+                        <h1 className='flex font-bold md:text-2xl text-lg text-btn font-bld   ' onClick={()=>navigate(-1)}><MdOutlineKeyboardBackspace size={34} /></h1>
             {detail ? (
                 <div>
                     {/*  Slideshow */}
@@ -141,7 +143,7 @@ function GameDetails() {
                         {/* Description */}
                         <div>
                             <h2 className="text-xl sm:text-2xl  text-btn font-med tracking-wider ">Description</h2>
-                            <p className="leading-relaxed text-gray-300 text-sm sm:text-base">{fulldesc ?  detail.description_raw.split(' ').slice(0, 90).join(' ')  :  detail.description_raw }<span className='text-btn cursor-pointer' onClick={() => setFulldesc(!fulldesc)}> {fulldesc ? 'view more' : 'view less'} </span></p>
+                            <p className="leading-relaxed text-gray-300 text-sm sm:text-base">{fulldesc ? detail.description_raw.split(' ').slice(0, 90).join(' ') : detail.description_raw}<span className='text-btn cursor-pointer' onClick={() => setFulldesc(!fulldesc)}> {fulldesc ? 'view more' : 'view less'} </span></p>
                         </div>
 
 

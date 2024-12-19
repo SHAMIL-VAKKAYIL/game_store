@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../store/store"
 import { fetchGenres } from "../store/slices/genreSlice"
+import { MdOutlineKeyboardBackspace } from "react-icons/md"
 
 function Category() {
 
@@ -39,7 +40,7 @@ function Category() {
     console.log(Genre);
 
     const navigate = useNavigate()
-    const gameDetails = (id:number) => {
+    const gameDetails = (id: number) => {
         navigate(`/Details/${id}`)
     }
 
@@ -57,7 +58,7 @@ function Category() {
                             <div key={gameItems.id}>
                                 <div>
                                     <div className="w-[100%]">
-                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all " onClick={()=>gameDetails(gameItems.id)}>{gameItems.name}</h3>
+                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all " onClick={() => gameDetails(gameItems.id)}>{gameItems.name}</h3>
 
                                     </div>
                                 </div>
@@ -81,7 +82,7 @@ function Category() {
                             <div key={gameItems.id}>
                                 <div>
                                     <div className="w-[100%]">
-                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all " onClick={()=>gameDetails(gameItems.id)}>{gameItems.name}</h3>
+                                        <h3 className="text-white md:text-base text-sm font-med hover:tracking-widest hover:text-btn transition-all " onClick={() => gameDetails(gameItems.id)}>{gameItems.name}</h3>
 
                                     </div>
                                 </div>
@@ -95,6 +96,8 @@ function Category() {
 
     return (
         <div className="">
+            <h1 className='flex font-bold md:text-2xl text-lg text-btn font-bld   ' onClick={() => navigate(-1)}><MdOutlineKeyboardBackspace size={34} /></h1>
+
             {loading ? '' : <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 ">
                 {Games}
             </div>}

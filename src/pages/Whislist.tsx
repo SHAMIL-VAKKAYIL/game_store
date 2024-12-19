@@ -3,6 +3,8 @@ import { AppDispatch, RootState } from '../store/store'
 import { HiOutlineXMark } from 'react-icons/hi2';
 import { removeFromWhislist } from '../store/slices/wishlistslice';
 import Gamecard from '../components/reusable/Gamecard';
+import { MdOutlineKeyboardBackspace } from 'react-icons/md';
+import { useNavigate } from 'react-router';
 
 function Whislist() {
 
@@ -17,7 +19,6 @@ function Whislist() {
         rating?: number
 
     }
-    console.log(whislist);
 
     const gameList = whislist?.map((item: Igames) => {
         return (
@@ -38,8 +39,11 @@ function Whislist() {
 
         )
     })
+
+    const navigate=useNavigate()
     return (
         <div>
+            <h1 className='flex font-bold md:text-2xl text-lg text-btn font-bld   ' onClick={()=>navigate(-1)}><MdOutlineKeyboardBackspace size={34} /></h1>
             {gameList.length > 0 ? (
                 <div>
                     <h3 className="flex font-bold text-2xl text-btn font-bld">Whishlist</h3>
@@ -49,7 +53,7 @@ function Whislist() {
                 </div>
             ) : (
                 <div className='flex  justify-center items-center  h-[50vh]'>
-                    <p className="text-white md:flex flex-col  font-bold md:text-2xl text-lg  font-bld items-center">No games found for "<p className="flex font-bold md:text-2xl text-lg text-btn font-bld"> Whislist is Empty</p> "</p>
+                    <p className="text-white md:flex flex-col  font-bold md:text-2xl text-lg  font-bld items-center"><p className="flex font-bold md:text-2xl text-lg text-btn font-bld"> Whislist is Empty</p></p>
                 </div>
             )}
         </div>
