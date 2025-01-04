@@ -4,7 +4,7 @@ export function CreateLoadingComp() {
     return (
         <div>
             <div className="flex-col flex w-48  justify-center overflow-hidden rounded-lg p-2 animate-pulse">
-                <div className="w-44 h-56 rounded-lg object-cover m-auto bg-gray-300 animate-pulse"></div>
+                <div className="sm:w-44 sm:h-72 w-40 h-64 rounded-lg object-cover m-auto bg-gray-300 animate-pulse"></div>
                 <div className="flex justify-end mt-2">
                     <div className="w-16 h-8 rounded-md bg-gray-300 animate-pulse"></div>
                 </div>

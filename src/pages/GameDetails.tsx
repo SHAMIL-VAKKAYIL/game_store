@@ -74,7 +74,7 @@ function GameDetails() {
             {detail ? (
                 <div>
                     {/*  Slideshow */}
-                    <div className=" w-full h-[70vh] relative overflow-hidden bg rounded-md">
+                    <div className=" w-full h-[40vh] md:h-[80vh] relative overflow-hidden bg rounded-md">
                         <div
                             className=" absolute rounded-md w-full h-full bg-cover bg-center opacity-0 animate-slideShow"
                             style={{ backgroundImage: `url(${detail.background_image})` }}
